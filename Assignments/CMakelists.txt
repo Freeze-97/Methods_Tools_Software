@@ -1,0 +1,36 @@
+# Projektets namn
+project(Laboration_3_skeleton)
+
+# Minsta tillåtna CMake version
+cmake_minimum_required(VERSION 3.2)
+
+# Kompilera med stöd för C++ 11
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -static")
+set (CMAKE_CXX_STANDARD 11)
+
+# Lägg till TOOLS_INCLUDE
+include_directories($ENV{TOOLS_INCLUDE})
+
+# Förkorta
+set(A_2 "Assignment_2")
+set(A_3 "Assignment_3")
+
+# Ta med alla källkodsfiler i den aktuella katalogen
+aux_source_directory(${A_2}/test Project)
+aux_source_directory(${A_3}/src Project)
+aux_source_directory(${A_3}/test Project)
+
+# Lägg till körbarafiler
+add_executable(${PROJECT_NAME}_${A_2} ${A_2}/include/stack.h
+        ${A_2}/test/test-main.cpp ${A_2}/test/test-stack.cpp)
+
+add_executable(${PROJECT_NAME}_${A_3} ${A_3}/include/MathExpression.h
+        ${A_3}/src/main.cpp ${A_3}/src/MathExpression.cpp)
+
+add_executable(${PROJECT_NAME}_${A_3}_TESTING ${A_3}/include/MathExpression.h
+        ${A_3}/test/test-calc.cpp ${A_3}/test/CatchMain.cpp)
+
+# Target
+target_include_directories(${PROJECT_NAME}_${A_2}  PRIVATE "./${A_2}/include")
+target_include_directories(${PROJECT_NAME}_${A_3}  PRIVATE "./${A_3}/include")
+target_include_directories(${PROJECT_NAME}_${A_3}_TESTING  PRIVATE "./${A_3}/include")
