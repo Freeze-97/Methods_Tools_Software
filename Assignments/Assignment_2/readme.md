@@ -21,3 +21,10 @@ This assignment implements a templated `Stack<T>` class using a singly linked li
 g++ -std=c++17 test/test-main.cpp test/test-stack.cpp -o stack_tests
 ./stack_tests
 ```
+
+## 🛠 Requirements
+- C++17 or later
+
+- A C++ compiler (e.g. g++)
+
+- Catch2 for Assignment 2 unit tests
